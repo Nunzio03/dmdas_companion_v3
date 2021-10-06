@@ -368,7 +368,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		break;
 	case 'g':
 		buffer[32] = "";
-		dim = sprintf(buffer,"%d\n",magic_number);
+		dim = sprintf(buffer,"%d\n",tare_counter*DMILLIM_USTEP_CONSTANT);
 		HAL_UART_Transmit_IT(&huart2, buffer,dim);
 	default:
 
