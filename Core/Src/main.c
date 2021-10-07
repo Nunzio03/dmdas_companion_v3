@@ -393,13 +393,13 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
 	if(GPIO_Pin == END_STOPmax_Pin){
 		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-		HAL_UART_Transmit_IT(&huart2, "MAX\n",4);
+		HAL_UART_Transmit_IT(&huart2, "9\n",2);
 		startup_movement = 0;
 		back_movement = 1;
 
 	}else if(GPIO_Pin==END_STOPmin_Pin){
 		back_movement = 0;
-		HAL_UART_Transmit_IT(&huart2, "1\n",2);
+		HAL_UART_Transmit_IT(&huart2, "0\n",2);
 	}
 }
 
