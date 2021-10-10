@@ -394,6 +394,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	if(GPIO_Pin == END_STOPmax_Pin){
 		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 		HAL_UART_Transmit_IT(&huart2, "9\n",2);
+		//TEST GITHUB
 		back_movement = 1;
 
 	}else if(GPIO_Pin==END_STOPmin_Pin){
