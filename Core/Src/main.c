@@ -342,7 +342,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			distance_avg += distance;
 		}
 		buffer[32] = "";
-		dim = sprintf(buffer,"%d\n",(distance_avg/100)); //media + conversione in millimetri
+		dim = sprintf(buffer,"%f\n",(float)(distance_avg/100.0)); //media + conversione in millimetri
 		HAL_UART_Transmit_IT(&huart2, buffer,dim);
 		//HAL_TIM_Base_Stop_IT(&htim11);
 		break;
