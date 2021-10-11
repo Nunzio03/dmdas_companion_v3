@@ -72,7 +72,7 @@ uint8_t move_mot = 0;
 uint8_t motor_moved = 0;
 uint8_t direction = 0;
 uint8_t startup_movement = 0;
-uint16_t tare_counter = 0;
+uint32_t tare_counter = 0;
 uint8_t back_movement = 0;
 
 /* UART Variables*/
@@ -368,7 +368,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		break;
 	case 'g':
 		buffer[32] = "";
-		dim = sprintf(buffer,"%d\n",tare_counter*DMILLIM_USTEP_CONSTANT);
+		dim = sprintf(buffer,"%f\n",(float)(tare_counter*DMILLIM_USTEP_CONSTANT));
 		HAL_UART_Transmit_IT(&huart2, buffer,dim);
 	default:
 
@@ -392,7 +392,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
 	if(GPIO_Pin == END_STOPmax_Pin){
-		startup_movement = 1;
+		startup_movement = 0;
 		HAL_UART_Transmit_IT(&huart2, "9\n",2);
 		back_movement = 1;
 
