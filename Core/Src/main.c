@@ -395,7 +395,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 		HAL_UART_Transmit_IT(&huart2, "9\n",2);
 		back_movement = 1;
-		//test nunzio
+
 
 	}else if(GPIO_Pin==END_STOPmin_Pin){
 		back_movement = 0;
