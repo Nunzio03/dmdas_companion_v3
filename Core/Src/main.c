@@ -105,9 +105,9 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim){
 			__HAL_TIM_SET_CAPTUREPOLARITY(htim, TIM_CHANNEL_1, TIM_INPUTCHANNELPOLARITY_FALLING);
 		}else{ //falling
 			if(val >= dist_time1){
-				distance = (uint32_t)((val - dist_time1)*100/58.0); // decimi di millimetro
+				distance = (uint32_t)((val - dist_time1)*10/58.0); // millimetri
 			}else{
-				distance = (uint32_t)(((0xffff-dist_time1)+val)*100/58.0);
+				distance = (uint32_t)(((0xffff-dist_time1)+val)*10/58.0);
 			}
 			rised_hc = 0;
 			__HAL_TIM_SET_CAPTUREPOLARITY(htim, TIM_CHANNEL_1, TIM_INPUTCHANNELPOLARITY_RISING);
@@ -368,7 +368,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		break;
 	case 'g':
 		buffer[32] = "";
-		dim = sprintf(buffer,"%f\n",(float)(tare_counter*DMILLIM_USTEP_CONSTANT));
+		dim = sprintf(buffer,"%f\n",(float)(tare_counter*DMILLIM_USTEP_CONSTANT/10));
 		HAL_UART_Transmit_IT(&huart2, buffer,dim);
 	default:
 
