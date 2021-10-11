@@ -392,6 +392,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
 	if(GPIO_Pin == END_STOPmax_Pin){
+		startup_movement = 1;
+		HAL_UART_Transmit_IT(&huart2, "9\n",2);
 		back_movement = 1;
 
 
