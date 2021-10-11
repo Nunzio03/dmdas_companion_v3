@@ -363,7 +363,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		motor_moved = 0;
 		break;
 	case 't':
-		HAL_UART_Transmit_IT(&huart2, "moving\n",7);
 		startup_movement = 1;
 		break;
 	case 'g':
