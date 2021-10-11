@@ -399,6 +399,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
 	}else if(GPIO_Pin==END_STOPmin_Pin){
 		back_movement = 0;
+		tare_counter = 0;
 		HAL_UART_Transmit_IT(&huart2, "0\n",2);
 	}
 }
