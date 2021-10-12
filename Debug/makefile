@@ -61,8 +61,8 @@ all: main-build
 main-build: dmdas_companion_v3.elf secondary-outputs
 
 # Tool invocations
-dmdas_companion_v3.elf: $(OBJS) $(USER_OBJS) D:\Desktop\ dei\ DATI\Cartelle\ OneDrive\OneDrive\ -\ Politecnico\ di\ Bari\anni_accademici\Anno_4\2020-21\Materie\DMDAS\STM32WORKSPACE\dmdas_companion_v3\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "dmdas_companion_v3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Desktop dei DATI\Cartelle OneDrive\OneDrive - Politecnico di Bari\anni_accademici\Anno_4\2020-21\Materie\DMDAS\STM32WORKSPACE\dmdas_companion_v3\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="dmdas_companion_v3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+dmdas_companion_v3.elf: $(OBJS) $(USER_OBJS) C:\Users\d.stigliano\OneDrive\ -\ Politecnico\ di\ Bari\Documenti\Git\dmdas_companion_v3\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "dmdas_companion_v3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\d.stigliano\OneDrive - Politecnico di Bari\Documenti\Git\dmdas_companion_v3\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="dmdas_companion_v3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

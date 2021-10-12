@@ -195,10 +195,10 @@ void move_stepper(uint32_t steps){
 void move_stepper_dec_mm(uint32_t dec_mm){
 	moving = 1;
 	if(direction){
-		open_loop_motor_position += dec_mm;
+		open_loop_motor_position -= dec_mm;
 	}else{
 
-		open_loop_motor_position -= dec_mm;
+		open_loop_motor_position += dec_mm;
 
 	}
 	move_stepper((uint32_t)(dec_mm/DMILLIM_USTEP_CONSTANT));
@@ -348,7 +348,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		break;
 	case 'b':
 		buffer[32] = "";
-		dim = sprintf(buffer,"%d\n",open_loop_motor_position);
+		dim = sprintf(buffer,"%f\n",open_loop_motor_position/10.0);
 		HAL_UART_Transmit_IT(&huart2, buffer,dim);
 		break;
 	case 'c':
