@@ -239,6 +239,7 @@ int main(void)
   MX_TIM4_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
+
   HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_1);
   HAL_TIM_IC_Start_IT(&htim4, TIM_CHANNEL_1);
 
@@ -249,6 +250,10 @@ int main(void)
   si5351_setupMultisynth(0, SI5351_PLL_A, 4, 1000-4, 1);
   si5351_setupRdiv(0, SI5351_R_DIV_8);
   si5351_enableOutputs(0xFF);
+
+  if(HAL_GPIO_ReadPin(END_STOPmin_GPIO_Port, END_STOPmin_Pin)){
+  		back_movement = 1;
+  	}
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -369,6 +374,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		buffer[32] = "";
 		dim = sprintf(buffer,"%f\n",(float)(tare_counter*DMILLIM_USTEP_CONSTANT/10));
 		HAL_UART_Transmit_IT(&huart2, buffer,dim);
+		break;
 	default:
 
 		HAL_UART_Transmit_IT(&huart2, "unknown char\n",13);
