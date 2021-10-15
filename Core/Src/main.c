@@ -251,7 +251,7 @@ int main(void)
   si5351_setupRdiv(0, SI5351_R_DIV_8);
   si5351_enableOutputs(0xFF);
 
-  if(HAL_GPIO_ReadPin(END_STOPmin_GPIO_Port, END_STOPmin_Pin)){
+  if(!HAL_GPIO_ReadPin(END_STOPmin_GPIO_Port, END_STOPmin_Pin)){
   		back_movement = 1;
   	}
   /* USER CODE END 2 */
@@ -399,7 +399,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	if(GPIO_Pin == END_STOPmax_Pin){ // quando tocco l'endstop finale
 		startup_movement = 0;
 		HAL_UART_Transmit_IT(&huart2, "9\n",2);
-		back_movement = 1;
+		if(!HAL_GPIO_ReadPin(END_STOPmin_GPIO_Port, END_STOPmin_Pin)){
+		  		back_movement = 1;
+		  	}
 		tare_counter = 0;
 
 
