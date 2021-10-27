@@ -182,11 +182,17 @@ void move_stepper(uint32_t steps){
 	HAL_GPIO_WritePin(MOTOR_ENABLE_GPIO_Port, MOTOR_ENABLE_Pin, 0);
 	 for (int i = 0; i <steps ; i++)
 	  {
+		 if(((direction == 1) && HAL_GPIO_ReadPin(END_STOPmin_GPIO_Port, END_STOPmin_Pin))||
+				 ((direction == 0)&& HAL_GPIO_ReadPin(END_STOPmax_GPIO_Port, END_STOPmax_Pin))){
+
+			 break;
+		 }
 
 		 HAL_GPIO_WritePin(MOTOR_STEP_GPIO_Port, MOTOR_STEP_Pin, 1);
 		 delay_us(30);
 		 HAL_GPIO_WritePin(MOTOR_STEP_GPIO_Port, MOTOR_STEP_Pin, 0);
 		 delay_us(30);
+
 	  }
 	 HAL_GPIO_WritePin(MOTOR_ENABLE_GPIO_Port, MOTOR_ENABLE_Pin, 1);
 
