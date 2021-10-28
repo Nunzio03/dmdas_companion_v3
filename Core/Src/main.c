@@ -251,11 +251,11 @@ int main(void)
 
 
   HAL_UART_Receive_IT(&huart2, &cmd_char, 1);
-  si5351_Init();
+  /*si5351_Init();
   si5351_setupPLLInt(SI5351_PLL_A, 32);
   si5351_setupMultisynth(0, SI5351_PLL_A, 4, 1000-4, 1);
   si5351_setupRdiv(0, SI5351_R_DIV_8);
-  si5351_enableOutputs(0xFF);
+  si5351_enableOutputs(0xFF);*/
 
   if(!HAL_GPIO_ReadPin(END_STOPmin_GPIO_Port, END_STOPmin_Pin)){
   		back_movement = 1;
