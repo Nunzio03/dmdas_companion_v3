@@ -282,9 +282,7 @@ int main(void)
 	  if(startup_movement){
 		  direction =0;
 		  move_stepper(600);
-	  }
-
-	  if(back_movement){
+	  }else if(back_movement){
 		  direction = 1;
 		  move_stepper(600);
 		  tare_counter += 600;
