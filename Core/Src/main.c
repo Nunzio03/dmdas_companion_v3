@@ -244,10 +244,12 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM4_Init();
   MX_I2C1_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_1);
   HAL_TIM_IC_Start_IT(&htim4, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
 
 
   HAL_UART_Receive_IT(&huart2, &cmd_char, 1);
