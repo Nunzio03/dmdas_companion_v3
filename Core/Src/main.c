@@ -105,9 +105,9 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim){
 			__HAL_TIM_SET_CAPTUREPOLARITY(htim, TIM_CHANNEL_1, TIM_INPUTCHANNELPOLARITY_FALLING);
 		}else{ //falling
 			if(val >= dist_time1){
-				distance = ((val - dist_time1)*10/58.8235294); // millimetri
+				distance = ((val - dist_time1)*0.17); // millimetri
 			}else{
-				distance = (((0xffff-dist_time1)+val)*10/58.8235294);
+				distance = (((0xffff-dist_time1)+val)*0.17);
 			}
 			rised_hc = 0;
 			__HAL_TIM_SET_CAPTUREPOLARITY(htim, TIM_CHANNEL_1, TIM_INPUTCHANNELPOLARITY_RISING);
